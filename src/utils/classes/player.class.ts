@@ -1,4 +1,5 @@
-import { User } from "./user.class";
+import { TurnManager } from "./TurnManager.class";
+import { User } from "./User.class";
 
 export class Player {
   idUser: User;
@@ -49,14 +50,23 @@ export class Player {
     this.isTurn = false;
 
     return this;
-    }
-    
-    skipTurn(): this{
-        this.skipNextTurn = true;
-        this.endTurn();
+  }
 
-        
+  // пропуск хода
+  skipTurn(): this {
+    this.skipNextTurn = true;
+    this.endTurn();
 
-        return this;
-    }
+    // переход хода следующему игроку
+    TurnManager.getInstance().moveToNextTurn();
+
+    return this;
+  }
+
+  // изменение значения пропуска следующего хода
+  resetSkipNextTurn(): this {
+    this.skipNextTurn = false;
+
+    return this;
+  }
 }
