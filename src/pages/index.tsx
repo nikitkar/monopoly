@@ -2,10 +2,12 @@ import Head from "next/head";
 
 import { useState, useEffect } from "react";
 
+
 import { Player } from "@/utils/classes/Player.class";
 import { User } from "@/utils/classes/User.class";
 import { Dice } from "@/utils/classes/Dice.class";
 import { TurnManager } from "@/utils/classes/TurnManager.class";
+import PlayedList from "@/components/gameBoard/player/PlayedList";
 
 const user1 = new User(1, "Никита", "красный", "img.png");
 const user2 = new User(2, "Андрей", "синий", "img.png");
@@ -63,16 +65,7 @@ export default function Home() {
             <div className="playingField-wrapper">
               <aside className="asidePlayer">
                 <div className="asidePlayer-list">
-                  <div className="asidePlayer-card">
-                    <div className="asidePlayer-card__body">
-                      <div className="asidePlayer-card__body-avatar"></div>
-                      <div className="asidePlayer-card__body-nik"></div>
-                      <div className="asidePlayer-card__body-money"></div>
-                      <div className="asidePlayer-card__body-timer"></div>
-                    </div>
-                    <div className="asidePlayer-card__menu"></div>{" "}
-                    {/* выпадающее меня для пользователя (профоиль, заблокировать, договор) */}
-                  </div>
+                  <PlayedList />
                 </div>
               </aside>
               <section className="board">
