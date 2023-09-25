@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Никита",
+      "color": "red",
+      "img": "img.png"
+    },
+    {
+      "id": 2,
+      "name": "Андрей",
+      "color": "blue",
+      "img": "img.png"
+    },
+    {
+      "id": 3,
+      "name": "Егор",
+      "color": "green",
+      "img": "img.png"
+    },
+    {
+      "id": 4,
+      "name": "Илья",
+      "color": "yellow",
+      "img": "img.png"
+    }
+  ],
+  "players": [
+    {
+      "idUser": 1,
+      "totalMoney": 15000,
+      "fieldNumber": 0,
+      "moveSkipping": false,
+      "defeat": false,
+      "isTurn": false,
+      "skipNextTurn": false
+    },
+    {
+      "idUser": 2,
+      "totalMoney": 15000,
+      "fieldNumber": 0,
+      "moveSkipping": false,
+      "defeat": false,
+      "isTurn": false,
+      "skipNextTurn": false
+    },
+    {
+      "idUser": 3,
+      "totalMoney": 15000,
+      "fieldNumber": 0,
+      "moveSkipping": false,
+      "defeat": false,
+      "isTurn": false,
+      "skipNextTurn": false
+    },
+    {
+      "idUser": 4,
+      "totalMoney": 15000,
+      "fieldNumber": 0,
+      "moveSkipping": false,
+      "defeat": false,
+      "isTurn": false,
+      "skipNextTurn": false
+    }
+  ]
+}
