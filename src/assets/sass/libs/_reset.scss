@@ -346,7 +346,8 @@ button {
   }
 }
 
-a, input {
+a,
+input {
   &:active,
   &:focus,
   &:focus-visible,
@@ -363,11 +364,11 @@ html {
 
   scroll-behavior: smooth;
 
-  font: normal 400 18px/27px "Inter";
+  font: normal 600 $size-main/normal "Open Sans";
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Open Sans";
   height: 100%;
 
   position: relative;

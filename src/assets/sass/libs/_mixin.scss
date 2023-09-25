@@ -10,9 +10,9 @@
 }
 
 @mixin font(
-  $fontSize: 14px,
-  $fontWeight: 400,
-  $fontFamily: "Inter",
+  $fontSize: $size-main,
+  $fontWeight: 600,
+  $fontFamily: "Open Sans",
   $lineHeight: normal
 ) {
   font-family: $fontFamily;
