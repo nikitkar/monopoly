@@ -1,0 +1,133 @@
+.asidePlayer {
+  max-width: 180px;
+  width: 100%;
+
+  &-list {
+    @include displayFlex(center, flex-start, column);
+    gap: 10px;
+  }
+
+  &-card {
+    width: 160px;
+
+    background-color: $color-bg_card-player;
+
+    padding: 10px;
+
+    -webkit-transition: 0.1s ease-in-out;
+    -o-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+
+    position: relative;
+
+    cursor: pointer;
+
+    color: white;
+
+    min-height: 130px;
+
+    &.active {
+      -webkit-transform: scale(1.075);
+      -ms-transform: scale(1.075);
+      transform: scale(1.075);
+
+      .asidePlayer-card__body-avatar-img {
+        border: none;
+      }
+    }
+
+    &__body {
+      width: 100%;
+      height: 100%;
+
+      @include displayFlex(center, flex-start, column);
+      gap: 3px;
+
+      &-avatar {
+        width: 50px;
+        height: 50px;
+
+        position: relative;
+
+        border-radius: 50%;
+
+        @include displayFlex(center, center, column);
+
+        &-img {
+          border-radius: 50%;
+          border: 3px solid #161a1b;
+        }
+      }
+
+      &-nick {
+        width: 100%;
+
+        position: relative;
+
+        &_nick {
+          text-align: center;
+
+          white-space: nowrap;
+
+          overflow: hidden;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+
+          font-size: $size-name_player;
+        }
+      }
+
+      &-money {
+        width: 100%;
+
+        text-align: center;
+
+        &_money {
+          font-size: $size-money_player;
+          position: relative;
+
+          @include font($size-money_player, 400);
+
+          &::before {
+            content: "$";
+
+            display: inline-block;
+
+            padding-right: 1px;
+
+            opacity: 0.5;
+            -webkit-transform: scale(0.75);
+            -ms-transform: scale(0.75);
+            transform: scale(0.75);
+          }
+          &::after {
+            content: "k";
+
+            padding-left: 2px;
+
+            opacity: 0.7;
+          }
+        }
+      }
+
+      &-timer {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+
+        width: 35px;
+        height: 35px;
+
+        border-radius: 50%;
+
+        @include displayFlex(center, center, column);
+
+        background-color: rgba(0, 0, 0, 0.15);
+
+        color: #fff;
+
+        @include font($size-timer_player, 600);
+      }
+    }
+  }
+}

@@ -4,13 +4,13 @@ import { User } from "./User.class";
 export class Player {
   idUser: User;
 
-  totalMoney: number; // всего денег
-  fieldNumber: number; // на каком номере поля находится
-  moveSkipping: boolean; // пропускает ли ход?
+  totalMoney: number;
+  fieldNumber: number; // which field number is located on
+  moveSkipping: boolean; // is he missing a move?
 
   defeat: boolean;
-  isTurn: boolean; // текущий ли ход игрока?
-  skipNextTurn: boolean; // пропускает ли следующий ход
+  isTurn: boolean; // is the player's current move?
+  skipNextTurn: boolean; // does the next move skip
 
   constructor(idUser: User) {
     this.idUser = idUser;
@@ -23,7 +23,7 @@ export class Player {
     this.skipNextTurn = false;
   }
 
-  // работа с деньгами игрока. Отнимание, плюсовать в зависимости от поля
+  // working with the player's money. Subtraction, plus depending on the field
   setMoney(amount: number, operator: string = "-"): this {
     this.totalMoney =
       operator === "-" ? this.totalMoney - amount : this.totalMoney + amount;
@@ -36,7 +36,7 @@ export class Player {
     return this;
   }
 
-  // установка поля, на котором должен быть игрой (бросается кубик, и подсчитывается, на какое поля игрок попадает)
+  // setting the field on which the game should be played (a die is thrown, and it is calculated which field the player hits)
   setFieldNumber(amountMove: number[]): this {
     this.fieldNumber += amountMove.reduce((acc, num) => acc + num, 0);
 
@@ -45,25 +45,25 @@ export class Player {
     return this;
   }
 
-  // конец хода
+  // end of the turn
   endTurn(): this {
     this.isTurn = false;
 
     return this;
   }
 
-  // пропуск хода
+  // skipping a move
   skipTurn(): this {
     this.skipNextTurn = true;
     this.endTurn();
 
-    // переход хода следующему игроку
+    // move to the next player
     TurnManager.getInstance().moveToNextTurn();
 
     return this;
   }
 
-  // изменение значения пропуска следующего хода
+  //changing the value of skipping the next move
   resetSkipNextTurn(): this {
     this.skipNextTurn = false;
 

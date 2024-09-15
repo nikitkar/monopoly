@@ -1,5 +1,7 @@
 import React from "react";
 
+import { TurnManager } from "@/utils/classes/TurnManager.class";
+
 import { Player } from "@/utils/classes/Player.class";
 import { User } from "@/utils/classes/User.class";
 
@@ -7,20 +9,24 @@ import userJson from "@/data/users/user.json";
 
 import PlayedCard from "./PlayedCard";
 
-const users = userJson.users;
 const players = userJson.players;
+
+const TurnManagerInstance = TurnManager.getInstance();
 
 const PlayedList: React.FC = () => {
   return (
     <>
-      {users.map((item, index) => (
+      {TurnManagerInstance.players.map((item, index) => (
         <PlayedCard
-          name={item.name}
-          color={item.color}
-          img={item.img}
+          name={item.idUser.name}
+          color={item.idUser.color}
+          img={item.idUser.img}
           money={
-            players[index].idUser === item.id ? players[index].totalMoney : 0
+            players[index].idUser === item.idUser.id
+              ? players[index].totalMoney
+              : 0
           }
+          indexUnic={index}
           key={index}
         />
       ))}

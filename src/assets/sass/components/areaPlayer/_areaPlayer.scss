@@ -1,0 +1,10 @@
+.playingArea {
+  width: 100%;
+
+  &-wrapper {
+    @include displayFlex(flex-start);
+    width: 100%;
+
+    gap: 20px;
+  }
+}

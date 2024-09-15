@@ -1,8 +1,8 @@
 export class User {
   id: number;
-  name: string; // имя игрока
-  color: string; // цвет игрока
-  img: string; // аватарка
+  name: string; // player's names
+  color: string; // player's color
+  img: string; // player's photo
 
   constructor(id: number, name: string, color: string, img: string) {
     this.id = id;

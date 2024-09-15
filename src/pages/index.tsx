@@ -2,49 +2,44 @@ import Head from "next/head";
 
 import { useState, useEffect } from "react";
 
-
 import { Player } from "@/utils/classes/Player.class";
 import { User } from "@/utils/classes/User.class";
 import { Dice } from "@/utils/classes/Dice.class";
 import { TurnManager } from "@/utils/classes/TurnManager.class";
+
 import PlayedList from "@/components/gameBoard/player/PlayedList";
 
-const user1 = new User(1, "Никита", "красный", "img.png");
-const user2 = new User(2, "Андрей", "синий", "img.png");
-const user3 = new User(3, "Егор", "зеленый", "img.png");
-const user4 = new User(4, "Илья", "желтый", "img.png");
+import userJson from "@/data/users/user.json";
+const users = userJson.users;
 
-const player1 = new Player(user1);
-const player2 = new Player(user2);
-const player3 = new Player(user3);
-const player4 = new Player(user4);
+const createUsersAndPlayers = (users: any[]) => {
+  return users.map((user) => {
+    const userInstance = new User(user.id, user.name, user.color, user.img);
+    return new Player(userInstance);
+  });
+};
 
+const players = createUsersAndPlayers(users);
 const dice = Dice.getInstance();
-
-const turnManager = TurnManager.getInstance().setPlayer([
-  player1,
-  player2,
-  player3,
-  player4,
-]);
+const turnManager = TurnManager.getInstance().setPlayer(players);
 
 export default function Home() {
   const [diceR, setDiceR] = useState<number[]>([]);
-  const [player, setPlayer] = useState(new Player(user1));
+  const [diceSumR, setDiceSumR] = useState<number>();
 
   useEffect(() => {
     turnManager.startGame();
-    player.setFieldNumber(dice.roll());
+    // player.setFieldNumber(dice.roll());
   }, []);
 
   const handleRollDice = () => {
     turnManager.moveToNextTurn();
 
     const diceRoll = dice.roll();
-    setDiceR(diceRoll);
-    player.setFieldNumber(diceRoll);
+    const diceSumRoll = dice.sumDice();
 
-    setPlayer(player);
+    setDiceR(diceRoll);
+    setDiceSumR(diceSumRoll);
   };
 
   return (
@@ -53,16 +48,16 @@ export default function Home() {
         <title>Monopoly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main>
-        {/* <p>
-          {diceR[0]} + {diceR[1]}= {diceR[0] + diceR[1]}
+      <main className="main">
+        <p>
+          {diceR[0]} + {diceR[1]}= {diceSumR}
         </p>
         <div>
           <button onClick={handleRollDice}>след ход</button>
-        </div> */}
-        <section className="playingField">
+        </div>
+        <section className="playingArea">
           <div className="container">
-            <div className="playingField-wrapper">
+            <div className="playingArea-wrapper">
               <aside className="asidePlayer">
                 <div className="asidePlayer-list">
                   <PlayedList />

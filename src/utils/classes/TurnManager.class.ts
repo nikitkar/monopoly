@@ -17,14 +17,14 @@ export class TurnManager {
     return TurnManager.instance;
   }
 
-  // инциализируем игроков
+  // initializing a players
   setPlayer(players: Player[]): this {
     this.players = players;
 
     return this;
   }
 
-  // начало игры (кто ходит первый)
+  // the beginning of the game (who goes first)
   startGame(): this {
     console.log("игра началась\n");
 
@@ -35,14 +35,14 @@ export class TurnManager {
     return this;
   }
 
-  // передает ход следующему игроку
+  // passes the move to the next player
   moveToNextTurn(): this {
     console.log(
       `конец хода игрока ${this.players[this.currentPlayerIndex].idUser.name}\n`
     );
     this.players[this.currentPlayerIndex].endTurn();
     this.currentPlayerIndex =
-      (this.currentPlayerIndex + 1) % this.players.length; // получаем номер следующего игрока
+      (this.currentPlayerIndex + 1) % this.players.length; // we get the number of the next player
 
     console.log(
       `следующий ход игрока ${
@@ -52,7 +52,7 @@ export class TurnManager {
 
     const currentPlayer = this.players[this.currentPlayerIndex];
 
-    // проверка на скип хода
+    // checking for a skip move
     if (currentPlayer.skipNextTurn) {
       console.log(
         `игрок ${

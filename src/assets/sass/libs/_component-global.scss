@@ -1,0 +1,8 @@
+.main {
+  min-height: 100vh;
+  height: 100%;
+
+  @include displayFlex(center, center, column);
+
+  background-color: $color-bg_main;
+}

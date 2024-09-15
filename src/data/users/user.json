@@ -3,26 +3,26 @@
     {
       "id": 1,
       "name": "Никита",
-      "color": "red",
-      "img": "img.png"
+      "color": "#cd3747",
+      "img": "/assets/user/user_avatar.jpg"
     },
     {
       "id": 2,
       "name": "Андрей",
-      "color": "blue",
-      "img": "img.png"
+      "color": "#2191e1",
+      "img": "/assets/user/user_avatar.jpg"
     },
     {
       "id": 3,
       "name": "Егор",
-      "color": "green",
-      "img": "img.png"
+      "color": "#66b343",
+      "img": "/assets/user/user_avatar.jpg"
     },
     {
       "id": 4,
       "name": "Илья",
-      "color": "yellow",
-      "img": "img.png"
+      "color": "#d188e3",
+      "img": "/assets/user/user_avatar.jpg"
     }
   ],
   "players": [
